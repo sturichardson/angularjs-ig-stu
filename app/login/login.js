@@ -14,16 +14,33 @@ angular.module('stuIG.login', ['ngRoute'])
    });
 }])
 
-.controller('LoginCtrl', function ($scope, loginFactory, $location) {
+.controller('LoginCtrl', ['$scope', 'loginFactory', '$location', '$cookies', function ($scope, loginFactory, $location, $cookies) {
   init();
-  function init() {}
+  function init() {
+    $scope.username = $cookies.get('angular-ig-stu_username');
+    $scope.apiKey = $cookies.get('angular-ig-stu_apikey');
+    $scope.demo = true;
+  }
 
   $scope.login = function() 
   {
-    loginFactory.login($scope.username, $scope.password, $scope.apikey)
-    .then(function (data, status, headers, config) {
+    $cookies.put('angular-ig-stu_username', $scope.username);
+    $cookies.put('angular-ig-stu_apikey', $scope.apiKey);
+    loginFactory.login($scope.username, $scope.password, $scope.apiKey)
+    .then(function (response) {
+      $scope.responseData = response.data;
+      $scope.securityTokens = {
+        'CST': response.headers('cst'),
+        'xSecurityToken': response.headers('x-security-token'),
+        'apiKey': $scope.apiKey
+      }
+      loginFactory.setSecurityTokens($scope.securityTokens);
       $location.path('/trade');
-    }, function (data, status, header, config) {
+    }, function (response) {
+      responseData = responseData;
+      console.log(responseData);
     });
+
+
   }
-});
+}]);

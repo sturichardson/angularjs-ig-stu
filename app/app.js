@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('stuIG', [
   'ngRoute',
+  'ngCookies',
   'stuIG.login',
   'stuIG.trade',
   'stuIG.version'
