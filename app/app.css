@@ -23,3 +23,27 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+@keyframes valup {
+  from {background-color:transparent;}
+  to {background-color:green;}  
+}
+
+@keyframes valdown {
+  from {background-color:transparent;}
+  to {background-color:red;}  
+}
+
+.valueup {
+  animation-name: valup;
+  animation-timing-function:step-start;
+  animation-duration: 1s;
+  /* background-color: green; */
+}
+
+.valuedown {
+  animation-name: valdown;
+  animation-timing-function:step-start;
+  animation-duration: 1s;
+  /* background-color: red; */
+}

@@ -5,6 +5,17 @@ angular.module('stuIG.login')
 .factory('loginFactory', ['$http', function ($http) {
   var factory = {};
   var securityTokens = {};
+  var lightStreamerEndpoint = {};
+  var username = {};
+  var self = this;
+
+  factory.setLightStreamerEndpoint = function (lse) {
+    lightStreamerEndpoint = lse;
+  }
+
+  factory.getLightStreamerEndpoint = function() {
+    return lightStreamerEndpoint;
+  }
   
   factory.setSecurityTokens = function(sts) {
     securityTokens = sts;
@@ -14,7 +25,12 @@ angular.module('stuIG.login')
     return securityTokens;
   }
 
+  factory.getUserName = function() {
+    return username;
+  }
+
   factory.login = function (username, password, apiKey) {
+    self.username = username;
 
     var requestData = {
       identifier: username,

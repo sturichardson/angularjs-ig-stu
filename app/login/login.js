@@ -30,11 +30,14 @@ angular.module('stuIG.login', ['ngRoute'])
     .then(function (response) {
       $scope.responseData = response.data;
       $scope.securityTokens = {
+        'accountId': response.data.currentAccountId,
         'CST': response.headers('cst'),
         'xSecurityToken': response.headers('x-security-token'),
         'apiKey': $scope.apiKey
       }
       loginFactory.setSecurityTokens($scope.securityTokens);
+      $scope.lightStreamerEndpoint = response.data.lightstreamerEndpoint;
+      loginFactory.setLightStreamerEndpoint($scope.lightStreamerEndpoint);
       $location.path('/trade');
     }, function (response) {
       responseData = responseData;
