@@ -1,39 +1,5 @@
 <div>
   <p>
-
-    <h3>Watch Lists</h3>
-    <div>
-      <span ng-repeat="item in watchLists">
-        <button class="btn btn-primary" ng-click="loadWatch(item.id)">{{item.name}}</button>
-      </span>
-    </div>
-    <!-- {{ watchLists }} -->
-
-    <h3>Watch List - {{ watch.name }}</h3>
-    <!-- {{ watchData }} -->
-
-    <div>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Epic</th>
-            <th>Bid</th>
-            <th>Offer</th>
-            <th>High</th>
-            <th>Low</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="item in items track by $index">
-            <td>{{ itemArray[$index] }}</td>
-            <td ng-repeat="field in item track by $index" ng-class="field.class">{{field.val}}</td>
-          </tr>
-        </tbody>
-      </table>
-      {{$index}}
-    </div>
-    <!-- <h3>SecurityTokens</h3>
-    {{ securityTokens }} -->
-  </p>
-
+    <watch-list-table></watch-list-table>
+   </p>
 </div>

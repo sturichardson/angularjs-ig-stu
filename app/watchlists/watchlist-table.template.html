@@ -1,0 +1,31 @@
+<h3>Watch Lists</h3>
+<div>
+  <span ng-repeat="item in $ctrl.watchLists" ng-if="$index > 0"</span>
+    <button class="btn btn-primary" ng-click="$ctrl.loadWatch(item.id)">{{item.name}}</button>
+  </span>
+</div>
+<!-- {{ watchLists }} -->
+
+<h3>Watch List - {{ $ctrl.watch.name }}</h3>
+<!-- {{ watchData }} -->
+
+<div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Epic</th>
+        <th>Bid</th>
+        <th>Offer</th>
+        <th>High</th>
+        <th>Low</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in $ctrl.items track by $index">
+        <td>{{ $ctrl.itemArray[$index] }}</td>
+        <td ng-repeat="field in item track by $index" ng-class="field.class">{{field.val}}</td>
+      </tr>
+    </tbody>
+  </table>
+  {{$index}}
+</div>
