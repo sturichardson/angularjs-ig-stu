@@ -2,18 +2,6 @@
 
 angular.module('stuIG.login', ['ngRoute'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider
-  .when('/login', {
-    templateUrl: 'login/login.html',
-    controller: 'LoginCtrl'
-  })
-  .when('/trade', {
-    templateUrl: 'trade/trade.html',
-    controller: 'TradeCtrl'
-   });
-}])
-
 .controller('LoginCtrl', ['$scope', 'loginFactory', '$location', '$cookies', function ($scope, loginFactory, $location, $cookies) {
   init();
   function init() {

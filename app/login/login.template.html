@@ -1,0 +1,35 @@
+<h1>AngularJS IG Stu Login</h1>
+
+<div class="col-md-12">
+    <h3>Login</h3>
+    
+    <form ng-submit="$ctrl.login()" class="form">
+      <div class="col-md-4">
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="$ctrl.username" placeholder="username" required=""/>
+        </div> 
+
+        <div class="form-group">
+          <input type="password" class="form-control" ng-model="$ctrl.password" placeholder="password" required=""/>
+        </div>
+
+        <div class="form-group">
+          <input type="text" class="form-control" ng-model="$ctrl.apiKey" placeholder="IG API KEY" required=""/>
+        </div> 
+
+        <div class="form-group">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" ng-model="$ctrl.demo" ng-checked="$ctrl.demo"/> Demo
+            </label>
+          </div>
+        </div> 
+      
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Login</button>
+          <span class="text-danger">{{ $ctrl.error }}</span>
+        </div>
+
+      </div>
+    </form>
+  </div> 
