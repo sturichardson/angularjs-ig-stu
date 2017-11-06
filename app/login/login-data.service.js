@@ -2,54 +2,47 @@
 
 angular.module('stuIG.login')
 
-.factory('loginDataFactory', ['$http', '$cookies', '$localstorage', function ($http, $cookies, $localstorage) {
-  var factory = {};
-  var self = this;
+  .factory('loginDataFactory', ['$http', '$localstorage', function ($http, $localstorage) {
+    var factory = {
+      securityTokens: {},
+      lightStreamerEndpoint: {},
 
-  self.securityTokens = {};
-  self.lightStreamerEndpoint = {};
-  // var username = {};
+      setLightStreamerEndpoint: function (lse) {
+        this.lightStreamerEndpoint = lse;
+      },
 
-  factory.setLightStreamerEndpoint = function (lse) {
-    self.lightStreamerEndpoint = lse;
-  }
+      getLightStreamerEndpoint: function () {
+        return this.lightStreamerEndpoint;
+      },
 
-  factory.getLightStreamerEndpoint = function() {
-    return self.lightStreamerEndpoint;
-  }
-  
-  factory.setSecurityTokens = function(sts) {
-    self.securityTokens = sts;
-//    $cookies.putObject('angular-ig-stu-securityTokens', self.securityTokens);
-    $localstorage.setObject('angular-ig-stu-securityTokens', self.securityTokens);
-  }
+      setSecurityTokens: function (sts) {
+        this.securityTokens = sts;
+        $localstorage.setObject('angular-ig-stu-securityTokens', this.securityTokens);
+      },
 
-  factory.getSecurityTokens = function() {
-    if (angular.equals(self.securityTokens, {}))
-      //self.securityTokens = $cookies.getObject('angular-ig-stu-securityTokens');
-      self.securityTokens = $localstorage.getObject('angular-ig-stu-securityTokens');
-  
-    return self.securityTokens;
-  }
+      getSecurityTokens: function () {
+        if (angular.equals(this.securityTokens, {}))
+          this.securityTokens = $localstorage.getObject('angular-ig-stu-securityTokens');
 
-  factory.isLoggedIn = function() {
-    var loggedIn = true;
-    self.securityTokens = factory.getSecurityTokens();
-    if ((angular.equals({}, self.securityTokens.CST)) && (angular.equals({}, self.securityTokens.xSecurityToken)))
-      loggedIn = false;
+        return this.securityTokens;
+      },
 
-      return loggedIn;
-  }
+      isLoggedIn: function () {
+        var loggedIn = true;
+        this.securityTokens = factory.getSecurityTokens();
+        if ((angular.equals({}, this.securityTokens.CST)) && (angular.equals({}, this.securityTokens.xSecurityToken)))
+          loggedIn = false;
 
-  factory.logout = function() {
-    self.securityTokens = factory.getSecurityTokens();
-    self.securityTokens.CST = {};
-    self.securityTokens.xSecurityToken = {};
-    factory.setSecurityTokens(self.securityTokens);
-  }
-  // factory.getUserName = function() {
-  //   return username;
-  // }
+        return loggedIn;
+      },
 
-  return factory;
-}]);
+      logout: function () {
+        this.securityTokens = factory.getSecurityTokens();
+        this.securityTokens.CST = {};
+        this.securityTokens.xSecurityToken = {};
+        factory.setSecurityTokens(this.securityTokens);
+      }
+    }
+
+    return factory;
+  }]);
