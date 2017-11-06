@@ -2,7 +2,7 @@
 
 angular.module('stuIG.trade')
 
-.factory('watchlistsFactory', ['$http', function ($http) {
+.factory('watchlistsFactory', ['$http', 'loginDataFactory', function ($http, loginDataFactory) {
   var factory = {};
   // var responseData = {};
   

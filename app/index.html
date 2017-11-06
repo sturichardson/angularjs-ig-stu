@@ -22,27 +22,33 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">AngularJS-IG-Stu</a>
+    <div ng-controller="MainCtrl">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">AngularJS-IG-Stu</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#!/trade">Trade</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-hide="loggedIn">
+                        <a href="#!/login">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                    <li ng-show="loggedIn">
+                        <a href="#!/logout">
+                            Logout</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="#">Home</a>
-                </li>
-                <li>
-                    <a href="#!/trade">Trade</a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#!/login">
-                        <span class="glyphicon glyphicon-log-in"></span> Login</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <div class="container">
         <div class="row">
@@ -51,7 +57,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
@@ -63,15 +68,19 @@
     <script src="lightstreamer.js"></script>
     <script src="app.js"></script>
     <script src="login/login.js"></script>
+    <script src="login/logout.js"></script>
+    <script src="login/login-data.service.js"></script>
     <script src="login/login.service.js"></script>
     <script src="login/login.component.js"></script>
     <script src="trade/trade.js"></script>
     <script src="watchlists/watchlists.service.js"></script>
     <script src="watchlists/watchlist.service.js"></script>
     <script src="watchlists/watchlist-table.component.js"></script>
+    <script src="utils/stuig-utils.service.js"></script>
     <script src="components/version/version.js"></script>
     <script src="components/version/version-directive.js"></script>
     <script src="components/version/interpolate-filter.js"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>

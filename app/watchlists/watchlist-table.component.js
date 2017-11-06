@@ -1,10 +1,10 @@
 angular.module('stuIG.trade')
   .component('watchListTable', {
     templateUrl: 'watchlists/watchlist-table.template.html',
-    controller: function watchListTableController($scope, loginFactory, watchlistsFactory, watchlistFactory) {
+    controller: function watchListTableController($scope, loginDataFactory, watchlistsFactory, watchlistFactory) {
       var self = this;
-      self.securityTokens = loginFactory.getSecurityTokens();
-      self.lsEndpoint = loginFactory.getLightStreamerEndpoint();
+      self.securityTokens = loginDataFactory.getSecurityTokens();
+      self.lsEndpoint = loginDataFactory.getLightStreamerEndpoint();
 
       watchlistsFactory.getWatchlists(self.securityTokens)
         .then(function (data) {

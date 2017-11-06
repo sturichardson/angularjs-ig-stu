@@ -6,7 +6,8 @@ angular.module('stuIG', [
   'ngCookies',
   'stuIG.login',
   'stuIG.trade',
-  'stuIG.version'
+  'stuIG.version',
+  'stuIG.utils'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
@@ -15,6 +16,10 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   .when('/login', {
     templateUrl: 'login/login.html',
     controller: 'LoginCtrl'
+  })
+  .when('/logout', {
+    templateUrl: 'login/login.html',
+    controller: 'LogoutCtrl'
   })
   .when('/trade', {
     templateUrl: 'trade/trade.html',

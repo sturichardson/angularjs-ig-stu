@@ -9,25 +9,25 @@ angular.module('stuIG.login')
   var username = {};
   var self = this;
 
-  factory.setLightStreamerEndpoint = function (lse) {
-    lightStreamerEndpoint = lse;
-  }
+  // factory.setLightStreamerEndpoint = function (lse) {
+  //   lightStreamerEndpoint = lse;
+  // }
 
-  factory.getLightStreamerEndpoint = function() {
-    return lightStreamerEndpoint;
-  }
+  // factory.getLightStreamerEndpoint = function() {
+  //   return lightStreamerEndpoint;
+  // }
   
-  factory.setSecurityTokens = function(sts) {
-    securityTokens = sts;
-  }
+  // factory.setSecurityTokens = function(sts) {
+  //   securityTokens = sts;
+  // }
 
-  factory.getSecurityTokens = function() {
-    return securityTokens;
-  }
+  // factory.getSecurityTokens = function() {
+  //   return securityTokens;
+  // }
 
-  factory.getUserName = function() {
-    return username;
-  }
+  // factory.getUserName = function() {
+  //   return username;
+  // }
 
   factory.login = function (username, password, apiKey) {
     self.username = username;
